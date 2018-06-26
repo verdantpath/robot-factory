@@ -1,5 +1,7 @@
 var robots = [];
 var btnRebuild = document.getElementById('btn-rebuild');
+var output = document.getElementById('main-content');
+var message = document.getElementById('message');
 
 btnRebuild.addEventListener('click', rebuildRobots);
 
@@ -36,9 +38,17 @@ function generateName() {
 function rebuildRobots() {
   var howMany = Math.floor((Math.random() * (10) + 1));
   console.log('howMany: ' + howMany);
+  // robots.pop(howMany);
   for(var i = 0; i < howMany; i++) {
-    robots.pop(i);
-    createRobot();
+    robots.pop();
+  }
+  for(var i = 0; i < howMany; i++) {
+
+    var robotSku = generateSku();
+    var robotName = generateName();
+    robots.push('<li>SKU: ' + robotSku + ', Name: ' + robotName + '</li>');
+    // console.log(i);
+    // console.log(robots);
     // checkRobot();
     // for(var x = 0; x < robots.length; x++) {
     //   if(robots[i] == ) {
@@ -47,11 +57,12 @@ function rebuildRobots() {
     //   }
     // }
   }
-  
-  // robotList();
+
+  output.innerHTML = '<ol>' + robots.join('') + '</ol>';
   // return robots;
   console.log('robots: ' + robots);
-  document.write('<p>' + howMany + ' robots were rebuilt.</p>');
+  console.log(robots);
+  message.innerHTML = '<p>' + howMany + ' robots were rebuilt.</p>';
 }
 
 // function checkRobot() {
@@ -64,5 +75,5 @@ function rebuildRobots() {
 
 // createRobot();
 robotList();
-// console.log(robots);
-console.log(rebuildRobots(), robots);
+console.log(robots);
+// console.log(rebuildRobots(), robots);
