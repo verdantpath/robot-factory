@@ -47,7 +47,8 @@ function rebuildRobots() {
     //   }
     // }
   }
-  // robotList();
+  robotList();
+  // return robots;
   console.log('robots: ' + robots);
   document.write('<p>' + howMany + ' robots were rebuilt.</p>');
 }
@@ -63,4 +64,4 @@ function rebuildRobots() {
 // createRobot();
 robotList();
 // console.log(robots);
-console.log(rebuildRobots());
+console.log(rebuildRobots(), robots);
