@@ -20,7 +20,7 @@ function robotList() {
 function createRobot() {
   var robotSku = generateSku();
   var robotName = generateName();
-  robots.push('<li>SKU: ' + robotSku + ', Name: ' + robotName + '</li>');
+  robots.push('<li>Name: ' + robotName + ', SKU: ' + robotSku + '</li>');
   return robots;
   // var output = document.write('<p>SKU: ' + robotSku + ', Name: ' + robotName + '</p>');
   // return output;
@@ -31,8 +31,14 @@ function generateSku() {
 }
 
 function generateName() {
-  // return Math.random().toString(36).substr(1,24);
-  return Math.floor((Math.random() + 1) * 0x100000);
+  var name = '';
+  var possible = 'abcdefghijklmnopqrstuvwxyz';
+
+  for (var i = 0; i < 5; i++) {
+    name += possible.charAt(Math.floor(Math.random() * possible.length));
+  }
+
+  return name;
 }
 
 function rebuildRobots() {
